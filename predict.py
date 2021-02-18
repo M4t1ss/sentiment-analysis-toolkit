@@ -28,24 +28,28 @@ writer = SummaryWriter()
 logger.add("experiment.log")
 
 flags.DEFINE_boolean('features', True, "")
-flags.DEFINE_string('test_file', None, "")
+flags.DEFINE_string('input', None, "")
+flags.DEFINE_string('output', None, "")
 flags.DEFINE_string('model_path', None, "")
 
 FLAGS = flags.FLAGS
 
 def main(_):
-    test_file = config.EVAL_PROC
+    input = config.EVAL_PROC
+    output = 'predictions.csv'
     model_path = config.MODEL_PATH
-    if FLAGS.test_file:
-        test_file = FLAGS.test_file
+    if FLAGS.input:
+        input = FLAGS.input
+    if FLAGS.output:
+        output = FLAGS.input
     if FLAGS.model_path:
         model_path = FLAGS.model_path
-    df_test = pd.read_fwf(test_file)
+    df_test = pd.read_fwf(input)
 
     logger.info(f"Bert Model: {config.BERT_PATH}")
     logger.info(
         f"Current date and time :{datetime.datetime.now().strftime('%Y-%m-%d %H:%M:%S')} ")
-    logger.info(f"Test file: {test_file}")
+    logger.info(f"Test file: {input}")
     logger.info(f"Test size : {len(df_test):.4f}")
     
     trg = []
@@ -73,7 +77,7 @@ def main(_):
         test_data_loader, model, device, extract_features=FLAGS.features)
     df_test["predicted"] = outputs
     # save file
-    df_test.to_csv('/home/matiss/experiments/embeddings/lm/tune-bert-2021/fulltext.prf.predictions-best.csv', header=None, index=False)
+    df_test.to_csv(output, header=None, index=False)
 
 
 if __name__ == "__main__":

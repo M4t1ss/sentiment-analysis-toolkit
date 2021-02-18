@@ -36,7 +36,8 @@ where you want to save sentiment classification models in `config.py`
 	use `grid_search.sh` to go over combinations.
 
 - #### Prediction
-	- Run `predict.py`
+	- Run `predict.py --input input-file.csv --output output-file.csv`
+	- The input file should be only texts - one per row. The output will be label, text.
 
 - #### Grid Search
 	- Iterate over several combinations of hyperparameters
@@ -46,9 +47,17 @@ where you want to save sentiment classification models in `config.py`
 The following are parameters for `train.py`
 
 | Parameter | Description                   					  | Example Value 			 	| Default Value  |
-|:---------:|:----------------------------------------------------|:----------------------------|:--------------:|
+|:----------|:----------------------------------------------------|:----------------------------|:---------------|
 | --tune    | Loads the model in `MODEL_PATH` for fine-tuning. 	  |                            	|                |
 | --lr      | Learning rate.                                 	  | 0.00005        	            | 0.00001        |
 | --drop    | Dropout.                                      	  | 0.1            	            | 0.3            |
 | --save    | Save and evaluate after X examples.                 | 3000            	        | 15000          |
 | --estop   | Stop training after model has not improved X times. | 10            	            | 5              |
+
+The following are parameters for `predict.py`
+
+| Parameter    | Description                   					  | Example Value 			 	| Default Value     |
+|:-------------|:-------------------------------------------------|:----------------------------|:------------------|
+| --input      | Input file for prediction - one text per line.   | 'in.csv'                  	| `EVAL_PROC`       |
+| --output     | Input file for prediction - one text per line.   | 'out.csv'        	        | 'predictions.csv' |
+| --model_path | Model to use for prediction.                     | 'best_model.bin'            | `MODEL_PATH`      |
