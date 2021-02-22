@@ -59,5 +59,5 @@ The following are parameters for `predict.py`
 | Parameter    | Description                   					  | Example Value 			 	| Default Value     |
 |:-------------|:-------------------------------------------------|:----------------------------|:------------------|
 | --input      | Input file for prediction - one text per line.   | 'in.csv'                  	| `EVAL_PROC`       |
-| --output     | Input file for prediction - one text per line.   | 'out.csv'        	        | 'predictions.csv' |
+| --output     | Output file with predicted label and text.       | 'out.csv'        	        | 'predictions.csv' |
 | --model_path | Model to use for prediction.                     | 'best_model.bin'            | `MODEL_PATH`      |
