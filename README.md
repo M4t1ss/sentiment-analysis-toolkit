@@ -61,3 +61,21 @@ The following are parameters for `predict.py`
 | --input      | Input file for prediction - one text per line.   | 'in.csv'                  	| `EVAL_PROC`       |
 | --output     | Output file with predicted label and text.       | 'out.csv'        	        | 'predictions.csv' |
 | --model_path | Model to use for prediction.                     | 'best_model.bin'            | `MODEL_PATH`      |
+
+		
+Publications
+---------
+
+If you use this tool, please cite the following paper:
+
+Maija Kāle, Matīss Rikters (2021). "[Fragmented and Valuable: Following Sentiment Changes in Food Tweets.](https://stt21.plopes.org/wp-content/uploads/2021/05/STT2021_Fragmented-and-Valuable.pdf)" Smell, Taste, and Temperature Interfaces (2021).
+
+```bibtex
+@inproceedings{Rikters-EtAl2017PBML,
+	author = {Kāle, Maija and Rikters, Matīss},
+	journal={Proceedings of Smell, Taste, and Temperature Interfaces Workshop},
+	title = {{Fragmented and Valuable: Following Sentiment Changes in Food Tweets}},
+	address={Yokohama, Japan},
+	year = {2021}
+}
+```
