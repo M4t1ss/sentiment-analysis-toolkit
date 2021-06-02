@@ -71,7 +71,7 @@ If you use this tool, please cite the following paper:
 Maija Kāle, Matīss Rikters (2021). "[Fragmented and Valuable: Following Sentiment Changes in Food Tweets.](https://stt21.plopes.org/wp-content/uploads/2021/05/STT2021_Fragmented-and-Valuable.pdf)" Smell, Taste, and Temperature Interfaces (2021).
 
 ```bibtex
-@inproceedings{Rikters-EtAl2017PBML,
+@inproceedings{Kale-Rikters-2021STT,
 	author = {Kāle, Maija and Rikters, Matīss},
 	journal={Proceedings of Smell, Taste, and Temperature Interfaces Workshop},
 	title = {{Fragmented and Valuable: Following Sentiment Changes in Food Tweets}},
