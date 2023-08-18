@@ -2,7 +2,7 @@ import datetime
 import random
 import numpy as np
 import pandas as pd
-import seaborn as sns
+# import seaborn as sns
 import torch
 import torch.nn as nn
 from absl import app, flags, logging
@@ -15,7 +15,7 @@ from torch.utils.tensorboard import SummaryWriter
 import config
 import dataset
 import engine
-from model import BERTBaseUncased
+from model import BERTBaseCased
 
 SEED = 42
 random.seed(SEED)
@@ -41,10 +41,10 @@ def main(_):
     if FLAGS.input:
         input = FLAGS.input
     if FLAGS.output:
-        output = FLAGS.input
+        output = FLAGS.output
     if FLAGS.model_path:
         model_path = FLAGS.model_path
-    df_test = pd.read_fwf(input)
+    df_test = pd.read_fwf(input, widths=[config.MAX_LEN])
 
     logger.info(f"Bert Model: {config.BERT_PATH}")
     logger.info(
@@ -64,12 +64,12 @@ def main(_):
     test_data_loader = torch.utils.data.DataLoader(
         test_dataset,
         batch_size=config.VALID_BATCH_SIZE,
-        num_workers=3
+        num_workers=20
     )
 
     device = torch.device('cuda' if torch.cuda.is_available() else 'cpu')
     
-    model = BERTBaseUncased(config.DROPOUT)
+    model = BERTBaseCased(config.DROPOUT)
     model.load_state_dict(torch.load(model_path, map_location=torch.device(device)))
     model.to(device)
 

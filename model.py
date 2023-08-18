@@ -3,9 +3,9 @@ import transformers
 import torch.nn as nn
 
 
-class BERTBaseUncased(nn.Module):
+class BERTBaseCased(nn.Module):
     def __init__(self, DROPOUT):
-        super(BERTBaseUncased, self).__init__()
+        super(BERTBaseCased, self).__init__()
         self.bert = transformers.BertModel.from_pretrained(config.BERT_PATH, return_dict=False)
 
         self.bert_drop = nn.Dropout(DROPOUT)

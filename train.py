@@ -9,7 +9,7 @@ import torch.nn as nn
 import numpy as np
 import os,sys
 from absl import app, flags
-from model import BERTBaseUncased
+from model import BERTBaseCased
 from sklearn import model_selection, metrics
 from sklearn.utils import shuffle
 from transformers import AdamW, get_linear_schedule_with_warmup
@@ -97,7 +97,7 @@ def main(_):
     )
 
     device = torch.device('cuda' if torch.cuda.is_available() else 'cpu') #torch.device("cuda")
-    model = BERTBaseUncased(DROPOUT)
+    model = BERTBaseCased(DROPOUT)
     if TUNE:
         model.load_state_dict(torch.load(configtune.MODEL_PATH, map_location=torch.device(device)))
     model.to(device)
